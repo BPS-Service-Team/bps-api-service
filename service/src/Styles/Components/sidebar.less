@@ -1,0 +1,65 @@
+.sidebar-app {
+  background-color: #001529;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 100vh;
+  padding: 0;
+  position: relative;
+
+  .ant-layout-sider-children {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: stretch;
+    overflow-y: auto;
+  }
+
+  .logo-wrapper {
+    align-items: center;
+    display: flex;
+    flex: 0 0 180px;
+    height: 180px;
+    justify-content: center;
+
+    img {
+      border-radius: 10%;
+      max-width: 120px;
+      width: 80%;
+    }
+  }
+
+  .main-menu {
+    flex-basis: 0;
+    flex-grow: 1;
+  }
+
+  .version {
+    align-items: center;
+    color: #fff;
+    display: flex;
+    flex: 0 0 30px;
+    height: 30px;
+    justify-content: center;
+    opacity: 0.35;
+    width: 100%;
+  }
+
+  .ant-layout-sider {
+    background: #001529;
+  }
+
+  .ant-menu-dark {
+    background-color: #001529;
+  }
+
+  .ant-menu-inline.ant-menu-sub {
+    background: #080808;
+  }
+
+  .ant-layout-sider-trigger {
+    background: #080808;
+    flex: 0 0 auto;
+    position: static;
+  }
+}

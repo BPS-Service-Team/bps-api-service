@@ -1,0 +1,39 @@
+.forgot-screen {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  .wrapper {
+    width: 400px;
+    padding: 20px;
+    -webkit-box-shadow: 2px 2px 13px -1px rgba(0,0,0,0.6);
+    -moz-box-shadow: 2px 2px 13px -1px rgba(0,0,0,0.6);
+    box-shadow: 2px 2px 13px -1px rgba(0,0,0,0.6);
+    @media only screen and (max-width: 700px) {
+      width: 100%;
+    }
+    .logo {
+      width: 100%;
+      padding-left: 75px;
+      padding-right: 75px;
+      margin-bottom: 30px;
+      img {
+        width: 100%;
+      }
+    }
+    .login-form-button {
+      width: 100%;
+    }
+    .sub-input {
+      border: none;
+      border-bottom: 1px solid;
+      border-bottom-width: 1px !important;
+      border-bottom-color: @primary-color;
+    }
+    .login-form-forgot {
+      cursor: pointer;
+    }
+  }
+}

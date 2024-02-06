@@ -1,0 +1,37 @@
+.pick-zones {
+  max-width: 70%;
+  margin: auto;
+  margin-top: 20px;
+  padding: 30px;
+  .pick-zone-result {
+    text-align: center;
+    border: 1px solid #212121;
+    border-radius: 10px;
+    padding: 30px;
+
+    &.large {
+      max-width: 200px;
+      width: 100%;
+    }
+    &.danger {
+      background-color: #e64640;
+      border: none;
+    }
+    &.info {
+      background-color: #27ae60;
+      border: none;
+    }
+    h3 {
+      text-align: center;
+    }
+    .multi-buttons {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+
+      button {
+        margin: 3px;
+      }
+    }
+  }
+}

@@ -1,0 +1,109 @@
+.assignment-screen {
+  width: 100vw;
+  height: calc(100vh - 70px);
+  padding: 20px;
+  .detail {
+    background-color: #fff;
+    border-radius: 20px;
+    height: 100%;
+    padding: 20px;
+  }
+  .table {
+    background-color: #fff;
+    border-radius: 20px;
+    height: 100%;
+    padding: 20px;
+    .dynamic-table {
+      min-height: 550px;
+    }
+    .pmy-btn {
+      height: 50px;
+      width: 150px;
+      border-radius: 10px;
+      background-color: #000;
+      color: #fff;
+      &[disabled] {
+        color: rgba(0, 0, 0, 0.25);
+        background: #f5f5f5;
+        border-color: #d9d9d9;
+        text-shadow: none;
+        box-shadow: none;
+      }
+    }
+    .ghost-btn {
+      height: 50px;
+      width: 150px;
+      border-radius: 10px;
+      border-color: #000;
+      color: #000;
+    }
+  }
+  .sub-container {
+    height: 100%;
+  }
+}
+.modal-success {
+  text-align: center;
+  border-radius: 20px;
+  h5 {
+    font-size: 16px;
+    margin: 20px;
+  }
+  .pmy-btn {
+    height: 50px;
+    width: 100%;
+    border-radius: 10px;
+    background-color: #000;
+    color: #fff;
+    font-size: 16px;
+    &[disabled] {
+      color: rgba(0, 0, 0, 0.25);
+      background: #f5f5f5;
+      border-color: #d9d9d9;
+      text-shadow: none;
+      box-shadow: none;
+    }
+  }
+}
+.warn-modal-confirm {
+  button {
+    height: 50px;
+    width: 150px;
+    border-radius: 10px;
+    border-color: #000;
+    color: #000;
+  }
+  .ant-modal-confirm {
+    width: 600px!important;
+  }
+  .ant-modal-confirm-body {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  .ant-modal-confirm-content {
+    text-align: center;
+    width: 100%;
+  }
+  .ok-btn {
+    height: 50px;
+    border-radius: 10px;
+    background-color: #000;
+    color: #fff;
+    font-size: 16px;
+    &[disabled] {
+      color: rgba(0, 0, 0, 0.25);
+      background: #f5f5f5;
+      border-color: #d9d9d9;
+      text-shadow: none;
+      box-shadow: none;
+    }
+  }
+  .ant-modal-confirm-content {
+    margin-left: 0!important;
+  }
+  .ant-modal-confirm-btns {
+    width: 100%;
+    text-align: center;
+  }
+}

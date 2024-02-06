@@ -1,0 +1,76 @@
+.admin-navbar {
+  text-align: left;
+  .ant-avatar {
+    width: 128px;
+    height: 128px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    font-size: 30px;
+    font-weight: bolder;
+  }
+  .info {
+    color: #707070;
+    text-align: left;
+    .email-link {
+      color: #2282f0;
+    }
+  }
+  .menu {
+    ul {
+      background: transparent !important;
+      li {
+        color: #d9d4d1 !important;
+        background: transparent !important;
+      }
+      .ant-menu-item-selected {
+        color: #f75757 !important;
+        background: transparent !important;
+      }
+      .ant-menu-submenu {
+        color: #d9d4d1 !important;
+        background: transparent !important;
+        &:hover {
+          color: #f75757 !important;
+        }
+        .ant-menu-submenu-title {
+          background-color: transparent !important;
+          color: #d9d4d1 !important;
+          &:hover {
+            color: #f75757 !important;
+          }
+        }
+      }
+    }
+  }
+  .trigger {
+    font-size: 20px;
+    cursor: pointer;
+  }
+  .log-out {
+    height: 40px;
+    margin-top: 54px;
+    margin-bottom: 4px;
+    padding: 0 16px;
+    overflow: hidden;
+    line-height: 40px;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    svg {
+      min-width: 14px;
+      margin-right: 10px;
+      font-size: 14px;
+      transition: font-size 0.15s cubic-bezier(0.215, 0.61, 0.355, 1),
+        margin 0.3s cubic-bezier(0.645, 0.045, 0.355, 1), color 0.3s;
+    }
+    span {
+      transition: font-size 0.15s cubic-bezier(0.215, 0.61, 0.355, 1),
+        margin 0.3s cubic-bezier(0.645, 0.045, 0.355, 1), color 0.3s;
+    }
+    &:hover {
+      color: #f75757;
+      opacity: 0.8;
+    }
+  }
+}

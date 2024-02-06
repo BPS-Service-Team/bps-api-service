@@ -1,0 +1,54 @@
+#root {
+  > .ant-layout {
+    .ant-layout-has-sider {
+      justify-content: stretch;
+    }
+  }
+
+  .default-container {
+    background-color: #f0f2f5;
+    color: #000;
+    flex: 1;
+    min-height: 100vh;
+    width: calc(100vw - 200px);
+
+    &.is-mobile {
+      width: 100vw;
+    }
+  }
+
+  .fluid-container {
+    overflow-x: auto;
+    overflow-y: auto;
+  }
+
+  .users-screen {
+    h3 {
+      font-weight: bolder;
+    }
+  }
+}
+
+.ant-modal-footer {
+  .footer-col {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    button {
+      margin: 0.5em 0;
+    }
+  }
+  .error {
+    color: red;
+  }
+}
+.remove-trigger {
+  color: @primary-color;
+  cursor: pointer;
+}
+.permission-editor {
+
+  .permission-list {
+    height: 100%;
+  }
+}
