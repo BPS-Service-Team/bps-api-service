@@ -1,0 +1,44 @@
+{
+  "host": "localhost",
+  "port": 3030,
+  "public": "../public/",
+  "paginate": {
+    "default": 10,
+    "max": 50
+  },
+  "authentication": {
+    "path": "/auth",
+    "entity": "user",
+    "service": "users",
+    "secret": "i+VktXLULiT2q+GGXknglheEOvw=",
+    "hashSize": "CONFIG_HASH_SIZE",
+    "authStrategies": [
+      "jwt",
+      "local",
+      "api-key"
+    ],
+    "refresh": {
+      "entityField": "_id",
+      "entityTarget": "user_id",
+      "expiresIn": "1y"
+    },
+    "jwtOptions": {
+      "header": {
+        "typ": "access"
+      },
+      "audience": "https://obsidiansoft.io",
+      "issuer": "feathers",
+      "algorithm": "CONFIG_ALGORITHM",
+      "expiresIn": "CONFIG_EXPIRES_IN"
+    },
+    "local": {
+      "usernameField": "email",
+      "passwordField": "password"
+    },
+    "api-key": {
+      "headerField": "x-api-key",
+      "entity": "api_key",
+      "service": "api-keys"
+    }
+  }
+}

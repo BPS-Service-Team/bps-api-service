@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Application - Verificación de Correo Electrónico</title>
+  <meta charset="UTF-8" />
+  <meta name="description" content="Application" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="favicon.ico" />
+</head>
+<body>
+  <div class="row h-100 no-gutters align-items-center">
+    <div class="col">
+      <div id="wrapper" class="container-fluid">
+        <div class="row header-logo">
+          <div class="col text-center">
+            <figure>
+              <img src="logo.png" alt="logo" />
+            </figure>
+          </div>
+        </div>
+        <div class="row text-center">
+          <div class="col">
+            <h3>Verificación de Correo Electrónico</h3>
+          </div>
+        </div>
+        <div id="msg-success" class="row" style="display: none;">
+          <div class="col">
+            <div class="alert alert-success" role="alert">
+              <div class="alert-icon"><i class="flaticon-like"></i></div>
+              <div class="alert-text">El correo electrónico ha sido verificado correctamente, su usuario ha sido activado, ahora puede iniciar sesión.</div>
+            </div>
+          </div>
+        </div>
+        <div id="msg-error" class="row" style="display: none;">
+          <div class="col">
+            <div class="alert alert-danger" role="alert">
+              <div class="alert-icon"><i class="flaticon-warning"></i></div>
+              <div class="alert-text">El token de verificación de correo electrónico no es válido!</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="assets/js/jquery-3.4.1.min.js"></script>
+  <script src="assets/js/popper.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/common.js"></script>
+  <script src="assets/js/pages/verify.js"></script>
+</body>
+</html>

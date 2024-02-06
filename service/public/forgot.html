@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Application - Reiniciar contraseña</title>
+  <meta charset="UTF-8" />
+  <meta name="description" content="Application" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="favicon.ico" />
+</head>
+<body>
+  <div class="row h-100 no-gutters align-items-center">
+    <div class="col">
+      <div id="wrapper" class="container-fluid">
+        <div class="row header-logo">
+          <div class="col text-center">
+            <figure>
+              <img src="logo.png" alt="logo" />
+            </figure>
+          </div>
+        </div>
+        <div class="row header-text">
+          <div class="col">
+            <h3>Reiniciar contraseña</h3>
+            <p>Favor de ingresar y confirmar su nueva contraseña:</p>
+          </div>
+        </div>
+        <div class="row content-form mt-2">
+          <div class="col">
+            <form id="mainform" onsubmit="return sendForgot(event);">
+              <div class="row">
+                <div class="col-md-6 col-12">
+                  <div class="input-group required">
+                    <input class="form-control" type="password" placeholder="Nueva contraseña" name="password" required="" />
+                  </div>
+                </div>
+                <div class="col-md-6 col-12">
+                  <div class="input-group">
+                    <input class="form-control" type="password" placeholder="Confirmación de contraseña" name="rpassword" required="" />
+                  </div>
+                </div>
+              </div>
+              <div class="row mt-4">
+                <div class="col text-center">
+                  <button id="reset_password" type="submit" class="btn btn-success">Actualizar contraseña</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="assets/js/jquery-3.4.1.min.js"></script>
+  <script src="assets/js/popper.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/common.js"></script>
+  <script src="assets/js/pages/forgot.js"></script>
+</body>
+</html>

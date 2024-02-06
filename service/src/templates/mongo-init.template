@@ -1,0 +1,113 @@
+const DB_NAME = 'test';
+const DB_USER = 'obsidian';
+const DB_PASS = 'obsidian';
+const aRoles = {{roles}};
+
+let oRolesResponse;
+async function insertRoles() {
+  db.auth(DB_USER, DB_PASS);
+  db = db.getSiblingDB(DB_NAME);
+
+  db.createCollection('roles');
+  oRolesResponse = await db.roles.insertMany(aRoles);
+  console.log('Roles inserted');
+}
+insertRoles();
+
+const aUsers = {{users}};
+
+let oUsersResponse;
+async function insertUsers() {
+  for (let oUser of aUsers) {
+    const nIndex = aRoles.findIndex((oRole) => oRole.group === oUser.rol_id);
+
+    if (nIndex > -1) {
+      oUser.rol_id = oRolesResponse.insertedIds[nIndex];
+    }
+  }
+
+  db.createCollection('users');
+  oUsersResponse = await db.users.insertMany(aUsers);
+  console.log('Users inserted');
+}
+insertUsers();
+
+const aApiKeys = {{api_keys}};
+
+async function insertApiKeys() {
+  for (let oApiKey of aApiKeys) {
+    const nIndex = aUsers.findIndex((oUser) => oUser.email === oApiKey.user_id);
+
+    if (nIndex > -1) {
+      oApiKey.user_id = oUsersResponse.insertedIds[nIndex];
+    }
+  }
+  db.createCollection('api_keys');
+  await db.api_keys.insertMany(aApiKeys);
+  console.log('api_keys inserted');
+}
+insertApiKeys();
+
+const aLabels = {{labels}};
+
+async function insertLabels() {
+  db.createCollection('labels');
+  await db.labels.insertMany(aLabels);
+  console.log('Labels inserted');
+}
+insertLabels();
+
+const aConfigs = {{configurations}};
+
+async function inserConfigs() {
+  db.createCollection('configurations');
+  await db.configurations.insertMany(aConfigs);
+  console.log('Config inserted');
+}
+inserConfigs();
+
+const aStocks = {{stocks}};
+
+async function insertStocks() {
+  db.createCollection('stocks');
+  await db.stocks.insertMany(aStocks);
+  console.log('Stocks inserted');
+}
+insertStocks();
+
+async function init() {
+  db.auth('obsidian', 'obsidian');
+  db = db.getSiblingDB('test');
+
+  const aOrders = {{orders}};
+
+  const aAgfs = {{agfs}};
+
+  const aPickupZones = {{pickup_zones}};
+
+  const aItems = {{items}};
+
+  const aLogs = {{wmsLogs}};
+
+  const aTransactions = {{transactions}};
+
+  db.createCollection('items');
+  await db.items.insertMany(aItems);
+
+  db.createCollection('orders');
+  await db.orders.insertMany(aOrders);
+
+  db.createCollection('agfs');
+  await db.agfs.insertMany(aAgfs);
+
+  db.createCollection('pickup_zones');
+  await db.pickup_zones.insertMany(aPickupZones);
+
+  db.createCollection('wmslogs');
+  await db.wmslogs.insertMany(aLogs);
+
+  db.createCollection('transactions');
+  await db.transactions.insertMany(aTransactions);
+}
+
+init();

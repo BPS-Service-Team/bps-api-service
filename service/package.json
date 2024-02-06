@@ -1,0 +1,94 @@
+{
+  "name": "service",
+  "description": "API Service",
+  "version": "0.0.0",
+  "homepage": "",
+  "private": true,
+  "main": "src",
+  "keywords": [
+    "feathers"
+  ],
+  "author": {
+    "name": "Beto Salas",
+    "email": "alberto.salas@obsidiansoft.io"
+  },
+  "contributors": [],
+  "bugs": {},
+  "directories": {
+    "lib": "src",
+    "test": "test/",
+    "config": "config/"
+  },
+  "engines": {
+    "node": "^14.0.0",
+    "npm": ">= 3.0.0"
+  },
+  "scripts": {
+    "test": "npm run eslint && npm run mocha",
+    "eslint": "eslint src/. test/. --config .eslintrc.json --fix",
+    "start": "node -r dotenv/config src/",
+    "dev": "nodemon -r dotenv/config src/",
+    "debug": "nodemon -r dotenv/config --inspect-brk src/",
+    "mocha": "mocha test/ --recursive --exit"
+  },
+  "standard": {
+    "env": [
+      "mocha"
+    ],
+    "ignore": []
+  },
+  "dependencies": {
+    "@casl/ability": "4.1.5",
+    "@casl/mongoose": "5.0.0",
+    "@feathers-plus/validate-joi": "3.4.0",
+    "@feathersjs/authentication": "4.5.11",
+    "@feathersjs/authentication-local": "4.5.11",
+    "@feathersjs/authentication-oauth": "4.5.11",
+    "@feathersjs/configuration": "4.5.11",
+    "@feathersjs/errors": "4.5.11",
+    "@feathersjs/express": "4.5.11",
+    "@feathersjs/feathers": "4.5.11",
+    "@feathersjs/socketio": "4.5.11",
+    "@feathersjs/transport-commons": "4.5.11",
+    "@joi/date": "2.1.0",
+    "@mongoosejs/double": "0.2.0",
+    "@thesinding/authentication-api-key": "0.0.7",
+    "aws-sdk": "2.964.0",
+    "axios": "0.24.0",
+    "bcryptjs": "2.4.3",
+    "body-parser": "1.19.0",
+    "compression": "1.7.4",
+    "cors": "2.8.5",
+    "crypto": "1.0.1",
+    "csv-stringify": "6.3.4",
+    "fast-csv": "4.3.6",
+    "fast-xml-parser": "4.0.0",
+    "feathers-mongoose": "8.3.3",
+    "firebase-admin": "9.11.0",
+    "helmet": "4.6.0",
+    "joi": "17.4.2",
+    "lodash.get": "4.4.2",
+    "moment": "2.29.1",
+    "mongodb-core": "3.2.7",
+    "mongoose": "6.0.12",
+    "ms": "2.1.3",
+    "multer": "1.4.3",
+    "mustache": "4.2.0",
+    "nodemailer": "6.6.3",
+    "prettier": "^2.6.2",
+    "serve-favicon": "2.5.0",
+    "serve-index": "1.9.1",
+    "winston": "3.3.3",
+    "winston-daily-rotate-file": "4.5.5"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.14.8",
+    "@babel/core": "^7.15.0",
+    "@babel/node": "^7.14.9",
+    "@babel/preset-env": "^7.15.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.32.0",
+    "mocha": "^9.1.3",
+    "nodemon": "^2.0.12"
+  }
+}

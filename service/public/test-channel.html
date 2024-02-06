@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Application - Suscripciones</title>
+  <meta charset="UTF-8" />
+  <meta name="description" content="Application" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="favicon.ico" />
+  <style>
+    #log-messages {
+      background: #222;
+      box-sizing: border-box;
+      color: #2ecc71;
+      font-family: monospace;
+      font-size: 11px;
+      height: 350px;
+      overflow: auto;
+      padding: 10px;
+      width: 100%;
+    }
+    #log-messages p {
+      margin-bottom: 0.1rem;
+    }
+    #log-messages .type-success {
+      color: #3498db;
+    }
+    #log-messages .type-error {
+      color: #e74c3c;
+    }
+  </style>
+</head>
+<body>
+  <div class="row h-100 no-gutters align-items-center">
+    <div class="col">
+      <div id="wrapper" class="container-fluid">
+        <div class="row header-logo">
+          <div class="col text-center">
+            <figure>
+              <img src="logo.png" alt="logo" />
+            </figure>
+          </div>
+        </div>
+        <div class="row text-center">
+          <div class="col">
+            <h3>Event logs</h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div id="log-messages" class="log-messages"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="assets/js/jquery-3.4.1.min.js"></script>
+  <script src="lib/socket/core.min.js"></script>
+  <script src="lib/socket/feathers.js"></script>
+  <script src="lib/socket/socket.io.js"></script>
+  <script>
+    // Socket.io is exposed as the `io` global.
+    const socket = io('https://bps.obsidiansoft.io', { path: '/v1/ws' });
+    const app = feathers();
+    let currentUser;
+
+    function onUpdateLocation(data) {
+      showLogMessage(`Data from server: ${JSON.stringify(data)}`);
+    }
+
+    function showLogMessage(sMessage, sType = 'normal') {
+      let $message = $('#log-messages');
+
+      if ($message.length) {
+        $message.append(`<p class='type-${sType}'>[${new Date().toISOString()}] ${sMessage}</p>`);
+      }
+    }
+
+    // Set up Socket.io client with the socket
+    app.configure(feathers.socketio(socket));
+
+    socket.on('connect', () => {
+      showLogMessage('Connected with the ID: ' + socket.id);
+
+      if (currentUser) {
+        showLogMessage('Try login again with JWT');
+
+        socket.emit('create', 'auth', {
+          strategy: 'jwt',
+          accessToken: currentUser.accessToken,
+        }, function(error, newAuthResult) {
+          if (!error) {
+            showLogMessage('Successfully connected with JWT', 'success');
+            currentUser = newAuthResult;
+          } else {
+            showLogMessage('Something went wrong, error: ' + error.message, 'error');
+          }
+        });
+      }
+    });
+
+    socket.on('disconnect', reason => {
+      showLogMessage('Disconnected, reason: ' + reason, 'error');
+    });
+
+    socket.emit('create', 'auth', {
+      strategy: 'local',
+      email: '',
+      password: ''
+    }, function(error, authResult) {
+      if (!error) {
+        showLogMessage('Successfully connected with credentials', 'success');
+        currentUser = authResult;
+      } else {
+        showLogMessage('Something went wrong, error: ' + error.message, 'error');
+      }
+    });
+
+    app.service('agfs').on('patched', onUpdateLocation);
+  </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+// agfs-model.js - A mongoose model
+//
+// See http://mongoosejs.com/docs/models.html
+// for more of what you can do here.
+module.exports = function (app) {
+  const modelName = 'agfs';
+  const mongooseClient = app.get('mongooseClient');
+  const { Schema } = mongooseClient;
+  const schema = new Schema(
+    {
+      device_name: { type: String, trim: true, unique: true },
+      lpn: { type: String, trim: true },
+      description: { type: String },
+      // 0: idle -> no está haciendo nada
+      // 1: busy -> moviéndose
+      // 2: paused
+      // 3: charging
+      // 4: locked
+      // 5: error
+      status: { type: Number, default: 0 },
+      code: { type: String, trim: true, max: 8 },
+
+      created_by: { type: Schema.Types.ObjectId, ref: 'users' },
+      updated_by: { type: Schema.Types.ObjectId, ref: 'users' },
+    },
+    {
+      timestamps: {
+        createdAt: 'created_at',
+        updatedAt: 'updated_at',
+      },
+    }
+  );
+
+  // This is necessary to avoid model compilation errors in watch mode
+  // see https://mongoosejs.com/docs/api/connection.html#connection_Connection-deleteModel
+  if (mongooseClient.modelNames().includes(modelName)) {
+    mongooseClient.deleteModel(modelName);
+  }
+  return mongooseClient.model(modelName, schema);
+};

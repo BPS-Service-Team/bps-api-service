@@ -1,0 +1,14 @@
+apps:
+  - script: ./src/index.js
+    name: 'bps-api-service'
+    instances: 1
+    exec_mode: cluster
+    max_memory_restart: 1G
+    env:
+      NODE_ENV: production
+    env_production:
+      NODE_ENV: production
+    log_date_format: 'DD-MM-YYYY HH:mm:ss Z'
+    min_uptime: 5000
+    max_restarts: 10
+    restart_delay: 1000
